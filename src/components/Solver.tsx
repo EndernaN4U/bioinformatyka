@@ -14,7 +14,7 @@ export default function Solver() {
     } 
 
     useEffect(()=>{
-        inf.getAmin();
+        console.log(inf.getAcids());
     },[data])
 
   return (
@@ -26,7 +26,7 @@ export default function Solver() {
             <div>
                 {
                     inf.foudedRna.map((rna: any, ind: any)=>{
-                        return <p key={ind}>{rna}</p>;
+                        return <p key={ind}>{rna} -&gt; {inf.codonsIntoAcids(rna)}</p>;
                     })
                 }
             </div>

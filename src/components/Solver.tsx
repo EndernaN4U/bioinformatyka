@@ -22,11 +22,11 @@ export default function Solver() {
         <textarea ref={myRef}
          onInput={(e)=>changeData((e.target as any).value)}></textarea>
          {
-            (inf.foudedRna)?
+            (inf.data)?
             <div>
                 {
-                    inf.foudedRna.map((rna: any, ind: any)=>{
-                        return <p key={ind}>{rna} -&gt; {inf.codonsIntoAcids(rna)}</p>;
+                    inf.data.map((rna: any, ind: any)=>{
+                        return <p key={ind}>{rna.rna} -&gt; {rna.aminoAcid}</p>;
                     })
                 }
             </div>

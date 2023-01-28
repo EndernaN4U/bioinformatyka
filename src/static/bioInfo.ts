@@ -1,23 +1,32 @@
-import { AriaAttributes } from 'react';
 import acids from './data/amino_acids.json';
 
 export default class BioInformatyka{
     dataString: string              // Non moduled input
-    foudedRna: Array<String> = []   // output from 'readRNA' function
 
+    data: Array<Object>
 
     constructor(_data: string = ""){
         this.dataString = _data;
+        this.data = [];
+    }
+
+    dnaToRna(_data: string){        // Change thymine to uracil
+        return _data.replaceAll('T','U');
     }
 
     setData(_data: string){         // Set data
         this.dataString = _data;
-        this.readRNA()              // force 'readRNA'
+        this.readRNA();             // force 'readRNA'
     }
 
     readRNA(){      // Get RNA from a data 
         const RegExp = /(AUG)((?!AUG)[AUGC]{3})*?(U(A(A|G)|GA))/gm;     // Set RegExp
-        this.foudedRna = this.dataString.match(RegExp) as Array<string>;
+        const foudedRna = this.dataString.match(RegExp) as Array<string>;
+
+        foudedRna.forEach((rna: String)=>{
+            const acid = this.codonsIntoAcids(rna as string);
+            this.data.push({aminoAcid: acid, rna: rna});
+        })
     }
 
     codonsIntoAcids(_data: string){     //Get string of acids from data

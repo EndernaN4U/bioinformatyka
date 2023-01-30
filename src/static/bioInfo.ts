@@ -1,4 +1,5 @@
 import acids from './data/amino_acids.json';
+import acidsMass from './data/amino_acids_mass.json'
 
 export default class BioInformatyka{
     dataString: string              // Non moduled input
@@ -45,5 +46,25 @@ export default class BioInformatyka{
 
     getAcids(){     // returns Acids from json file
         return acids;
+    }
+    
+    getProperties(_aminoAcid: string){
+        let props = []
+        props.push(_aminoAcid.length)                           // length
+        props.push(this.calculateMass(_aminoAcid))              // protein mass
+        return props
+    }
+
+    calculateMass(_aminoAcid: string){
+        const aminoAcid = _aminoAcid.split('').map( e=>e as keyof Object)
+        let mass = 0;  
+
+        for(let i = 0; i < aminoAcid.length - 1; i++) {
+            mass += acidsMass[aminoAcid[i]]["Mass" as keyof Object] as any
+        }
+
+        mass -= (aminoAcid.length - 2) * 18.015                 // 18.015 = H2O mass
+        mass = Math.round(mass * 10000) / 10000                 // round to 3 decimal places
+        return mass;
     }
 }

@@ -1,0 +1,103 @@
+{
+    "A": {
+        "FullName": "Alanine",
+        "Symbol": "Ala",
+        "Mass": 89.094
+    },
+    "R":{
+        "FullName": "Arginine",
+        "Symbol": "Arg",
+        "Mass": 174.203
+    },
+    "N":{
+        "FullName": "Asparagine",
+        "Symbol": "Asn",
+        "Mass": 132.119
+    },
+    "D":{
+        "FullName": "Aspartate",
+        "Symbol": "Asp",
+        "Mass": 133.104
+    },
+    "C":{
+        "FullName": "Cysteine",
+        "Symbol": "Cys",
+        "Mass": 121.154
+    },
+    "Q":{
+        "FullName": "Glutamine",
+        "Symbol": "Gln",
+        "Mass": 146.146
+    },
+    "E":{
+        "FullName": "Glutamate",
+        "Symbol": "Glu",
+        "Mass": 147.131
+    },
+    "G":{
+        "FullName": "Glycine",
+        "Symbol": "Gly",
+        "Mass": 75.067
+    },
+    "H":{
+        "FullName": "Histidine",
+        "Symbol": "His",
+        "Mass": 155.156
+    },
+    "I":{
+        "FullName": "Isoleucine",
+        "Symbol": "Ile",
+        "Mass": 131.175
+    },
+    "L":{
+        "FullName": "Leucine",
+        "Symbol": "Leu",
+        "Mass": 131.175
+    },
+    "K":{
+        "FullName": "Lysine",
+        "Symbol": "Lys",
+        "Mass": 146.189
+    },
+    "M":{
+        "FullName": "Methionine",
+        "Symbol": "Met",
+        "Mass": 149.208
+    },
+    "F":{
+        "FullName": "Phenylalanine",
+        "Symbol": "Phe",
+        "Mass": 165.192
+    },
+    "P":{
+        "FullName": "Proline",
+        "Symbol": "Pro",
+        "Mass": 115.132
+    },
+    "S":{
+        "FullName": "Serine",
+        "Symbol": "Ser",
+        "Mass": 105.093
+    },
+    "T":{
+        "FullName": "Threonine",
+        "Symbol": "Thr",
+        "Mass": 119.119
+    },
+
+    "W":{
+        "FullName": "Tryptophan",
+        "Symbol": "Trp",
+        "Mass": 204.228
+    },
+    "Y":{
+        "FullName": "Tyrosine",
+        "Symbol": "Tyr",
+        "Mass": 181.191
+    },
+    "V":{
+        "FullName": "Valine",
+        "Symbol": "Val",
+        "Mass": 117.148
+    }
+}

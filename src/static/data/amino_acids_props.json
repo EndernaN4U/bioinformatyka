@@ -2,102 +2,136 @@
     "A": {
         "FullName": "Alanine",
         "Symbol": "Ala",
-        "Mass": 89.094
+        "Mass": 89.094,
+        "hydropathy":  1.8
     },
     "R":{
         "FullName": "Arginine",
         "Symbol": "Arg",
-        "Mass": 174.203
+        "Mass": 174.203,
+        "hydropathy": -4.5,
+        "delta":  1,
+        "charge": 12.48
     },
     "N":{
         "FullName": "Asparagine",
         "Symbol": "Asn",
-        "Mass": 132.119
+        "Mass": 132.119,
+        "hydropathy": -3.5
     },
     "D":{
         "FullName": "Aspartate",
         "Symbol": "Asp",
-        "Mass": 133.104
+        "Mass": 133.104,
+        "hydropathy": -3.5,
+        "delta": -1,
+        "charge": 3.9
     },
     "C":{
         "FullName": "Cysteine",
         "Symbol": "Cys",
-        "Mass": 121.154
+        "Mass": 121.154,
+        "hydropathy":  2.5,
+        "delta": -1,
+        "charge": 8.18
     },
     "Q":{
         "FullName": "Glutamine",
         "Symbol": "Gln",
-        "Mass": 146.146
+        "Mass": 146.146,
+        "hydropathy": -3.5
     },
     "E":{
         "FullName": "Glutamate",
         "Symbol": "Glu",
-        "Mass": 147.131
+        "Mass": 147.131,
+        "hydropathy": -3.5,
+        "delta": -1,
+        "charge": 4.07
     },
     "G":{
         "FullName": "Glycine",
         "Symbol": "Gly",
-        "Mass": 75.067
+        "Mass": 75.067,
+        "hydropathy": -0.4
     },
     "H":{
         "FullName": "Histidine",
         "Symbol": "His",
-        "Mass": 155.156
+        "Mass": 155.156,
+        "hydropathy": -3.2,
+        "delta":  1, 
+        "charge": 6.04
     },
     "I":{
         "FullName": "Isoleucine",
         "Symbol": "Ile",
-        "Mass": 131.175
+        "Mass": 131.175,
+        "hydropathy":  4.5
     },
     "L":{
         "FullName": "Leucine",
         "Symbol": "Leu",
-        "Mass": 131.175
+        "Mass": 131.175,
+        "hydropathy":  3.8
     },
     "K":{
         "FullName": "Lysine",
         "Symbol": "Lys",
-        "Mass": 146.189
+        "Mass": 146.189,
+        "hydropathy": -3.9,
+        "delta":  1, 
+        "charge": 10.54
     },
     "M":{
         "FullName": "Methionine",
         "Symbol": "Met",
-        "Mass": 149.208
+        "Mass": 149.208,
+        "hydropathy":  1.9
     },
     "F":{
         "FullName": "Phenylalanine",
         "Symbol": "Phe",
-        "Mass": 165.192
+        "Mass": 165.192,
+        "hydropathy":  2.8
     },
     "P":{
         "FullName": "Proline",
         "Symbol": "Pro",
-        "Mass": 115.132
+        "Mass": 115.132,
+        "hydropathy": -1.6
     },
     "S":{
         "FullName": "Serine",
         "Symbol": "Ser",
-        "Mass": 105.093
+        "Mass": 105.093,
+        "hydropathy": -0.8
     },
     "T":{
         "FullName": "Threonine",
         "Symbol": "Thr",
-        "Mass": 119.119
+        "Mass": 119.119,
+        "hydropathy": -0.7
     },
 
     "W":{
         "FullName": "Tryptophan",
         "Symbol": "Trp",
-        "Mass": 204.228
+        "Mass": 204.228,
+        "hydropathy": -0.9
     },
     "Y":{
         "FullName": "Tyrosine",
         "Symbol": "Tyr",
-        "Mass": 181.191
+        "Mass": 181.191,
+        "hydropathy": -1.3,
+        "delta": -1,
+        "charge": 10.46
     },
     "V":{
         "FullName": "Valine",
         "Symbol": "Val",
-        "Mass": 117.148
+        "Mass": 117.148,
+        "hydropathy":  4.2
     }
 }

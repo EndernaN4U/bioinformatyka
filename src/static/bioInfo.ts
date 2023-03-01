@@ -28,6 +28,8 @@ export default class BioInformatyka{
         const RegExp = /(AUG)((?!AUG)[AUGC]{3})*?(U(A(A|G)|GA))/gm;     // Set RegExp
         const foudedRna = this.dataString.match(RegExp) as Array<string>;
 
+        this.data = [];
+        
         foudedRna.forEach((rna: String)=>{
             const acid = this.codonsIntoAcids(rna as string);
             this.data.push({aminoAcid: acid, rna: rna});
@@ -85,15 +87,13 @@ export default class BioInformatyka{
         return mass;
     }
 
-
     calcGravy( amounts: Map<string, number> ) {
         // gravy is calculated by adding hydropathy values of every aminoacid in the protein and then dividing it by the number of aminoacids
         let gravy = 0, am = 0;
         console.log(amounts)
         for (let [key, value] of amounts) {
             const hydropathy = aminoProps[ObjKey(key)][ObjKey("hydropathy")] as any;
-            console.log(hydropathy, key ,value);
-            gravy += value * hydropathy;
+            gravy += value * hydropathy;    
             am += 1;
         }
         gravy /= am // if we decide to serialize that, we should also make a field with the total number of aminoacids in the sequence (lenght)
@@ -117,7 +117,7 @@ export default class BioInformatyka{
             NQ+= 1/(1+Math.pow(10,(pH-8.2)));                
     
             if (pH>=14.0) {
-                console.log("somethings fucked")
+                console.log("Ph crossed 14.");
                 break;    
             }                                                 
     
@@ -127,5 +127,6 @@ export default class BioInformatyka{
     
             pH+=0.01;
         }
+        return null;
     }
 }

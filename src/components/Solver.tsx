@@ -8,7 +8,13 @@ export default function Solver() {
 
     let myRef = createRef<HTMLTextAreaElement>();
 
-    const changeData = (input: string)=>{
+    const changeData = ()=>{
+        let input = myRef.current?.value!;
+        if(input === ""){
+            inf.data = [];
+            setData("");
+            return;
+        }
         inf.setData(input);
         setData(input);
     } 
@@ -19,8 +25,8 @@ export default function Solver() {
 
   return (
     <div>
-        <textarea ref={myRef}
-         onInput={(e)=>changeData((e.target as any).value)}></textarea>
+        <textarea ref={myRef}></textarea>
+        <button onClick={changeData}>Calculate</button>
          {
             (inf.data)?
             <div>
@@ -34,7 +40,7 @@ export default function Solver() {
                             <p>length: {data.length}</p>
                             <p>gravy: {data.gravy}</p>
                             <p>mass: {data.mass}</p>
-                            <p>isoelectric point: {data.pi}</p>
+                            <p>pi: {data.pi}</p>
                             <p>net charge: </p>
                             <p>prop</p>
                             <p>prop</p>

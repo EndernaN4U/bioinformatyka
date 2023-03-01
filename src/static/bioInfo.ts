@@ -107,10 +107,10 @@ export default class BioInformatyka{
         let pH = 0
         while ( true ) { 
             let NQ = 0 // initializes the  n-terminus charge
-            for ( let [key,amount] of Object.entries(amounts) ) {
+            for ( let [key,amount] of amounts ) {
                 const delta =  aminoProps[ObjKey(key)][ObjKey("delta")] as any;
                 const charge = aminoProps[ObjKey(key)][ObjKey("charge")] as any;
-                NQ+= delta * amount / (1+Math.pow(10, delta * (pH - charge)));        
+                if(charge && delta) NQ+= delta * amount / (1+Math.pow(10, delta * (pH - charge)));        
             } 
     
             NQ+= -1/(1+Math.pow(10,(3.65-pH))); //these are constants, we can compute it beforehand btw

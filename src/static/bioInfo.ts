@@ -1,5 +1,5 @@
 import acids from './data/amino_acids.json';
-import acidsMass from './data/amino_acids_props.json';
+import aminoProps from './data/amino_acids_props.json';
 
 function ObjKey(str: string): keyof Object{
     return str as keyof Object;
@@ -51,20 +51,33 @@ export default class BioInformatyka{
     getAcids(){     // returns Acids from json file
         return acids;
     }
-    
+
     getProperties(_aminoAcid: string){
-        let props = []
-        props.push(_aminoAcid.length)                           // length
-        props.push(this.calculateMass(_aminoAcid))              // protein mass
+
+        let amounts = new Map<string, number>();
+        for (let aminoacid of _aminoAcid ) { // iterates over protein, counts aminoacids with charges
+            if ( aminoProps[ObjKey(aminoacid)] !== undefined ) {
+                 amounts.set(aminoacid,(amounts.has(aminoacid)? amounts.get(aminoacid)! + 1 : 1))
+            }  
+
+        }
+
+        let props = {
+            length: _aminoAcid.length,
+            mass : this.calcMass(_aminoAcid),
+            gravy: this.calcGravy(amounts),
+            pi: this.calcPi(amounts)
+        }
+        
         return props
     }
 
-    calculateMass(_aminoAcid: string){
+    calcMass(_aminoAcid: string){
         const aminoAcid = _aminoAcid.split('').map( e=>ObjKey(e))
         let mass = 0;  
 
         for(let i = 0; i < aminoAcid.length - 1; i++) {
-            mass += acidsMass[aminoAcid[i]][ObjKey("Mass")] as any
+            mass += aminoProps[aminoAcid[i]][ObjKey("Mass")] as any
         }
 
         mass -= (aminoAcid.length - 2) * 18.015                 // 18.015 = H2O mass
@@ -72,28 +85,32 @@ export default class BioInformatyka{
         return mass;
     }
 
-    calcPi(_aminoAcid : string) {
-        const aminoacids = { // aminoacids with charges and respective deltas (positive / negative)
-            'D':{ "delta": -1, "charge": 3.9   },
-            'E':{ "delta": -1, "charge": 4.07  },
-            'C':{ "delta": -1, "charge": 8.18  },
-            'Y':{ "delta": -1, "charge": 10.46 },
-            'H':{ "delta":  1, "charge": 6.04  },
-            'K':{ "delta":  1, "charge": 10.54 },
-            'R':{ "delta":  1, "charge": 12.48 }
+
+    calcGravy( amounts: Map<string, number> ) {
+        // gravy is calculated by adding hydropathy values of every aminoacid in the protein and then dividing it by the number of aminoacids
+        let gravy = 0, am = 0;
+        console.log(amounts)
+        for (let [key, value] of amounts) {
+            const hydropathy = aminoProps[ObjKey(key)][ObjKey("hydropathy")] as any;
+            console.log(hydropathy, key ,value);
+            gravy += value * hydropathy;
+            am += 1;
         }
-        let amounts = new Map<string, number>();
-        for (let aminoacid of _aminoAcid ) { // iterates over protein, counts aminoacids with charges
-            if ( aminoacids[ObjKey(aminoacid)] !== undefined ) {
-                 amounts.set(aminoacid,(amounts.has(aminoacid)? amounts.get(aminoacid)! + 1 : 1))
-            }  
-        }
+        gravy /= am // if we decide to serialize that, we should also make a field with the total number of aminoacids in the sequence (lenght)
+        return gravy.toFixed(3)
+    }
+
+    
+
+    calcPi(amounts: Map<string,number>) {
     
         let pH = 0
         while ( true ) { 
             let NQ = 0 // initializes the  n-terminus charge
-            for ( let [key,amino] of Object.entries(aminoacids) ) {
-                NQ+= amino.delta * amounts.get(key)! / (1+Math.pow(10, amino.delta * (pH - amino.charge)));           
+            for ( let [key,amount] of Object.entries(amounts) ) {
+                const delta =  aminoProps[ObjKey(key)][ObjKey("delta")] as any;
+                const charge = aminoProps[ObjKey(key)][ObjKey("charge")] as any;
+                NQ+= delta * amount / (1+Math.pow(10, delta * (pH - charge)));        
             } 
     
             NQ+= -1/(1+Math.pow(10,(3.65-pH))); //these are constants, we can compute it beforehand btw

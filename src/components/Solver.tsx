@@ -14,7 +14,7 @@ export default function Solver() {
     } 
 
     useEffect(()=>{
-        console.log(inf.getAcids());
+        
     },[data])
 
   return (
@@ -26,13 +26,15 @@ export default function Solver() {
             <div>
                 {
                     inf.data.map((rna: any, ind: any)=>{
+                        const data = inf.getProperties(rna.aminoAcid);
                         return (
                             <div key={ind} className='protein'>
                             {/* <p>sequence: {rna.rna}</p> */}
                             <p>sequence: {rna.aminoAcid}</p>
-                            <p>length: {inf.getProperties(rna.aminoAcid)[0]}</p>
-                            <p>mass: {inf.getProperties(rna.aminoAcid)[1]}</p>
-                            <p>isoelectric point: {inf.getProperties(rna.aminoAcid)[2]}</p>
+                            <p>length: {data.length}</p>
+                            <p>gravy: {data.gravy}</p>
+                            <p>mass: {data.mass}</p>
+                            <p>isoelectric point: {data.pi}</p>
                             <p>net charge: </p>
                             <p>prop</p>
                             <p>prop</p>

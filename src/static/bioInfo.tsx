@@ -1,5 +1,5 @@
 import acids from './data/amino_acids.json';
-import acidsMass from './data/amino_acids_props.json';
+import aminoProps from './data/amino_acids_props.json';
 import A from './svg/A.svg'
 import Af from './svg/Af.svg'
 import C from './svg/C.svg'
@@ -106,7 +106,6 @@ export default class BioInformatyka{
             if ( aminoProps[ObjKey(aminoacid)] !== undefined ) {
                  amounts.set(aminoacid,(amounts.has(aminoacid)? amounts.get(aminoacid)! + 1 : 1))
             }  
-
         }
 
         let props = {
@@ -114,7 +113,7 @@ export default class BioInformatyka{
             mass : this.calcMass(_aminoAcid),
             gravy: this.calcGravy(amounts),
             pi: this.calcPi(amounts),
-            svg: this.drawSvg(_aminoAcid)
+            svg: this.drawSVG(_aminoAcid)
         }
         
         return props
@@ -146,6 +145,8 @@ export default class BioInformatyka{
         return gravy.toFixed(3)
     }
 
+    
+
     calcPi(amounts: Map<string,number>) {
     
         let pH = 0
@@ -173,7 +174,7 @@ export default class BioInformatyka{
         }
         return null;
     }
-    
+
     drawSVG(_aminoAcid : string) {
 
         const svg = {
@@ -211,6 +212,8 @@ export default class BioInformatyka{
         let amino = false
         let transform = ''
 
+        
+
         return(
           <div style={{ transform: 'translate(10px)' }}>
           <img src={svg.M}></img>
@@ -218,6 +221,8 @@ export default class BioInformatyka{
             _aminoAcid.split("").map((el, i) => {
                 const translateCopy = translate
                 amino = !amino
+                
+                console.log(el)
                 
                 if (el != 'M') connector = !connector
                 if (_aminoAcid[i - 1] == 'A' || _aminoAcid[i - 1] == 'G') connector = !connector
@@ -237,6 +242,8 @@ export default class BioInformatyka{
                 else if(el == 'W')  transform = "translate(-18.916px)"
                 else if(el == 'I')  transform = "translate(-26.296px)"
                 else transform = '0'
+
+                console.log(el)
                 
                 return(
                     i == 0 ? '' :  
@@ -277,5 +284,4 @@ export default class BioInformatyka{
           </div>
         )
     }
-    
 }

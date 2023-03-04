@@ -134,14 +134,13 @@ export default class BioInformatyka{
 
     calcGravy( amounts: Map<string, number> ) {
         // gravy is calculated by adding hydropathy values of every aminoacid in the protein and then dividing it by the number of aminoacids
-        let gravy = 0, am = 0;
-        console.log(amounts)
-        for (let [key, value] of amounts) {
-            const hydropathy = aminoProps[ObjKey(key)][ObjKey("hydropathy")] as any;
-            gravy += value * hydropathy;    
-            am += 1;
+        let gravy = 0, amountOfAminoacids = 0;
+        for (let [amino , amount] of amounts) {
+            const hydropathy = aminoProps[ObjKey(amino)][ObjKey("hydropathy")] as any;
+            gravy += amount * hydropathy;    
+            amountOfAminoacids += amount ;
         }
-        gravy /= am // if we decide to serialize that, we should also make a field with the total number of aminoacids in the sequence (lenght)
+        gravy /= amountOfAminoacids
         return gravy.toFixed(3)
     }
 

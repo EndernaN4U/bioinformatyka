@@ -113,7 +113,7 @@ export default class BioInformatyka{
             length: _aminoAcid.length,
             mass : this.calcMass(_aminoAcid),
             gravy: this.calcGravy(amounts),
-            pi: this.calcPi(amounts)
+            pi: this.calcPi(amounts),
             svg: this.drawSvg(_aminoAcid)
         }
         

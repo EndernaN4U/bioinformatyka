@@ -222,8 +222,6 @@ export default class BioInformatyka{
                 const translateCopy = translate
                 amino = !amino
                 
-                console.log(el)
-                
                 if (el != 'M') connector = !connector
                 if (_aminoAcid[i - 1] == 'A' || _aminoAcid[i - 1] == 'G') connector = !connector
                 if (el == 'A' || el == 'G') {
@@ -276,7 +274,7 @@ export default class BioInformatyka{
             })
           }
           {
-            !connector ?
+            connector ?
             <img src={svg.oxygen} style={{ position: 'absolute', left: `${translate - 35.777}px` }}/>
             :
             <img src={svg.oxygenf} style={{ position: 'absolute', left: `${translate - 35.777}px` }}/>

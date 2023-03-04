@@ -41,7 +41,7 @@ export default function Solver() {
                             <p>gravy: {data.gravy}</p>
                             <p>mass: {data.mass}</p>
                             <p>pi: {data.pi}</p>
-                            <p>net charge: </p>
+                            <div> {data.svg} </div>
                             <p>prop</p>
                             <p>prop</p>
                             </div>

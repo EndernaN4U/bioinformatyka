@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="63.98"
+   height="400"
+   viewBox="0 0 16.928041 105.83334"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <g
+     id="layer3"
+     style="display:inline"
+     transform="matrix(1.0000022,0,0,1,-19.906868,0)">
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 32.605781,54.322538 -6.147447,-4.979581 -6.30151,4.979581 v 8.282867 l 6.30151,4.634462 h 6.147445"
+       id="path1040"
+       transform="matrix(1,0,0,-1,1.6703925e-8,103.66549)" />
+    <text
+       xml:space="preserve"
+       style="display:inline;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:Tahoma;-inkscape-font-specification:'Tahoma, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;stroke-width:0.264583"
+       x="26.475985"
+       y="43.049038"
+       id="text14926"
+       transform="matrix(1,0,0,-1,1.6703925e-8,103.66549)"><tspan
+         id="tspan14924"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:Tahoma;-inkscape-font-specification:'Tahoma, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="26.475985"
+         y="43.049038">O</tspan></text>
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 26.458334,36.425627 -2.695443,-8.054843 4.266407,-2.889665 m -0.768945,9.125499 -1.769401,-5.524764"
+       id="path110973" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 32.179949,25.481119 4.349088,2.889665 -1.471744,5.362028"
+       id="path110975" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 33.998959,33.335937 1.041797,-3.803385"
+       id="path112329" />
+    <text
+       xml:space="preserve"
+       style="display:inline;font-weight:bold;font-size:4.23333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.264583"
+       x="32.494144"
+       y="37.695354"
+       id="text122762"><tspan
+         id="tspan122760"
+         style="stroke-width:0.264583"
+         x="32.494144"
+         y="37.695354">N</tspan></text>
+    <text
+       xml:space="preserve"
+       style="display:inline;font-weight:bold;font-size:4.23333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.264583"
+       x="28.490253"
+       y="27.04071"
+       id="text122762-3"><tspan
+         id="tspan122760-9"
+         style="stroke-width:0.264583"
+         x="28.490253"
+         y="27.04071">N</tspan></text>
+    <text
+       xml:space="preserve"
+       style="display:inline;font-weight:bold;font-size:4.23333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.264583"
+       x="28.490253"
+       y="22.184158"
+       id="text127359"><tspan
+         id="tspan127357"
+         style="stroke-width:0.264583"
+         x="28.490253"
+         y="22.184158">H</tspan></text>
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 26.189751,14.55814 v 6.107471"
+       id="path1632"
+       transform="matrix(1,0,0,-1,0.75617938,74.585979)" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 25.197332,14.55814 v 6.107471"
+       id="path1634"
+       transform="matrix(1,0,0,-1,0.75617938,74.585979)" />
+  </g>
+</svg>

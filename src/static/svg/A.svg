@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="72.741997"
+   height="400"
+   viewBox="0 0 19.246319 105.83334"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <g
+     id="layer3"
+     style="display:inline"
+     transform="translate(-13.516948)">
+    <text
+       xml:space="preserve"
+       style="display:inline;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:Tahoma;-inkscape-font-specification:'Tahoma, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+       x="11.295478"
+       y="43.100555"
+       id="text19323"><tspan
+         id="tspan20733"
+         x="11.295478"
+         y="43.100555" /></text>
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 32.605781,54.322538 -6.147447,-4.979581 -6.30151,4.979581 -6.487658,-4.979581"
+       id="path1040" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 26.189751,14.55814 v 6.107471"
+       id="path1632"
+       transform="translate(0.75617895,29.07951)" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 25.197332,14.55814 v 6.107471"
+       id="path1634"
+       transform="translate(0.75617895,29.07951)" />
+    <text
+       xml:space="preserve"
+       style="display:inline;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:Tahoma;-inkscape-font-specification:'Tahoma, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;stroke-width:0.264583"
+       x="26.475985"
+       y="43.049038"
+       id="text14926"><tspan
+         id="tspan14924"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:Tahoma;-inkscape-font-specification:'Tahoma, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="26.475985"
+         y="43.049038">O</tspan></text>
+    <path
+       id="path7213-9"
+       style="display:inline;color:#000000;fill:#000000;stroke-width:5.21092;stroke-dasharray:2.20595, 4.4119;-inkscape-stroke:none"
+       d="m 19.332052,61.900994 1.631973,0.007 -0.04077,-0.423157 -1.551826,-0.0072 z m 0.117829,-1.270558 1.391016,0.0062 -0.04078,-0.423155 -1.310977,-0.0057 z m 0.117583,-1.269098 1.150485,0.005 -0.0414,-0.42392 -1.069714,-0.0045 z m 0.117656,-1.269827 0.909212,0.0039 -0.04098,-0.424268 -0.828757,-0.0037 z m 0.117829,-1.27056 0.668257,0.0031 -0.0412,-0.422809 -0.587804,-0.0029 z m 0.117582,-1.269097 0.426993,0.0019 -0.04098,-0.424269 -0.34653,-0.0018 z" />
+  </g>
+</svg>

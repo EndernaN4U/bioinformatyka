@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 import BioInformatyka from '../static/bioInfo'
+import { Scatter, Bar } from "react-chartjs-2";
+import { Chart, LineController, LineElement, PointElement, LinearScale, Title,CategoryScale, ArcElement, BarElement } from 'chart.js';
+Chart.register(LineController, LineElement, PointElement, LinearScale, Title, CategoryScale, ArcElement, BarElement);
+
 
 export default function Props({data, inf}:{data: any, inf: BioInformatyka}) {
 
@@ -18,7 +22,27 @@ export default function Props({data, inf}:{data: any, inf: BioInformatyka}) {
             <p>gravy: {data.gravy}</p>
             <p>mass: {data.mass}</p>
             <p>net charge: {data.netCharge}</p>
-            <p>isoelectric point: {data.isoelectricPoint}</p>
+            <p>isoelectric point: {data.isoelectricPoint.isoelectricPoint}</p>
+            <p>isoelectric point chart</p>
+            <Scatter
+            data={{
+                  datasets: [{
+                    data: data.isoelectricPoint.chartData,
+                    borderWidth: 0.2
+                  }]
+                }}
+            />
+            <p> number of aminoacids in the sequence </p>
+            <Bar
+            data={{
+                labels:data.occurencesChart.labels,
+                  datasets: [{
+                    data: data.occurencesChart.amounts,
+                    borderWidth: 0.2
+                  }]
+                }}
+            />
+
             </>:<></>
         } 
     </div>

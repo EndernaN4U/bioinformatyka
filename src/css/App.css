@@ -116,6 +116,7 @@ p{
     color: var(--Mocha);
     font-family: 'Open Sans', sans-serif;
     text-shadow: var(--Mocha) 1px 0 2px;
+    margin-top: 40px;
 }
 
 .protein{
@@ -128,6 +129,17 @@ p{
 .protein p{
     text-shadow: none;
 }
+
+.protein > button{
+    border: none;
+    background-color: var(--Mocha);
+    color: var(--SoftGrey);
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--EarlGrey);
+}
+
+
 
 
 /* FOOTER */

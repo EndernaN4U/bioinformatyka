@@ -11,7 +11,7 @@ export default function Props({data, inf}:{data: any, inf: BioInformatyka}) {
 
   return (
     <div className='protein'>
-        <button onClick={()=>setMore(!more)}>{(more)?"Less info":"👩🏿"}</button> 
+        <button onClick={()=>setMore(!more)}>{(more)?"Less info":"More Info"}</button> 
         <p>sequence: {data.sequence}</p>
         <div style={{ width: '100%', overflow: 'auto' }}> {data.svg} </div>
         {
@@ -24,6 +24,7 @@ export default function Props({data, inf}:{data: any, inf: BioInformatyka}) {
             <p>net charge: {data.netCharge}</p>
             <p>isoelectric point: {data.isoelectricPoint.isoelectricPoint}</p>
             <p>isoelectric point chart</p>
+            
             <Scatter
             data={{
                   datasets: [{

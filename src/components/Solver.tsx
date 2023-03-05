@@ -68,8 +68,7 @@ export default function Solver() {
                         style={{display: (type==="text")? "block":"none"}} 
                         ref={textRef} 
                         placeholder="Enter the amino acid string" 
-                        id="here" 
-                        onInput={changeData}>
+                        id="here" >
                     </textarea>
                     <button onClick={changeData}>Calculate</button>
 
@@ -101,7 +100,7 @@ export default function Solver() {
                 <figcaption>Designed by:</figcaption>
                 <ul>
                     <li>Arkadiusz Skupień</li>
-                    <li>Adrian Ziembla</li>
+                    <li>Adrian Zięba</li>
                     <li>Karol Marek</li>
                     <li>Maciej Matuszczyk</li>
                     <li>Sebastian Rogóż</li>
@@ -109,7 +108,7 @@ export default function Solver() {
             </figure>
             </div>
             <div className="footer-doc">
-                <b><a href="#">Download documentation</a></b>
+                <b><a href="https://github.com/EndernaN4U/bioinformatyka">Download documentation</a></b>
             </div> 
             <div className="footer-copyright">
                 &copy; orłyZSŁ

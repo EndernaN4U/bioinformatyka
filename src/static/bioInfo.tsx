@@ -94,7 +94,7 @@ export default class BioInformatyka{
         for (let amino of sequence) {
             longSequence += aminoProps[ObjKey(amino)][ObjKey("Symbol")] as any + " - ";
         }
-        return "NH2 - " + longSequence + "COO-" 
+        return longSequence + "COO-" 
     }
 
     calcNetCharge( amounts: Map<string, number> ) {

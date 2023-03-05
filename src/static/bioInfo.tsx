@@ -12,7 +12,8 @@ export default class BioInformatyka{
     data: Array<Object>
 
     constructor(_data: string = ""){
-        this.dataString = _data; this.data = [];
+        this.dataString = _data;
+        this.data = [];
     }
 
     dnaToRna(_data: string){        // Change thymine to uracil
@@ -29,7 +30,6 @@ export default class BioInformatyka{
     setData(_data: string){         // Set data
         if(_data.includes('T')) _data = this.dnaToRna(_data);
         if(!this.validateData(_data)) return;
-
 
         this.dataString = _data;
         this.readRNA();             // force 'readRNA'
@@ -75,6 +75,7 @@ export default class BioInformatyka{
         }
 
         let props = {
+            sequence: sequence,
             length: sequence.length,
             mass : this.calcMass(amounts),
             longSequence : this.getLongSequence(sequence),

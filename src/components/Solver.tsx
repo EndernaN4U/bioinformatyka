@@ -1,16 +1,21 @@
-import React, { createRef, useEffect, useState } from 'react'
+import React, { createRef, useCallback, useEffect, useMemo, useState } from 'react'
 import BioInformatyka from '../static/bioInfo'
+import Props from './Props';
 
 export default function Solver() {
 
     const [inf, setBioInfo] = useState(new BioInformatyka());
     const [data,setData] = useState('');
     const [type, setType] = useState('text');
+    const [selected, setSelected] = useState("");
 
     let textRef = createRef<HTMLTextAreaElement>();
     let fileRef = createRef<HTMLInputElement>();
 
-    const changeData = ()=>{
+
+    const [dl,sdl] = useState(new Array<any>);
+
+    const changeData = async()=>{
         if(type==="text"){
             let input = textRef.current?.value!;
             if(input === ""){
@@ -27,13 +32,10 @@ export default function Solver() {
                 inf.setData(data);
                 setData(data);
             })
-        }
-        
+        }   
     } 
 
-    useEffect(()=>{
-        
-    },[data])
+    
 
   return (
     <div>
@@ -47,28 +49,18 @@ export default function Solver() {
         <input style={{display: (type==="file")? "block":"none"}} ref={fileRef} type="file" accept='.txt' multiple={false}/>
         <button onClick={changeData}>Calculate</button>
          {
-            (inf.data)?
+            inf.data?
             <div>
                 {
-                    inf.data.map((rna: any, ind: any)=>{
+                    inf.data.map((rna: any, ind: number)=>{
                         const data = inf.getProperties(rna.sequence);
                         return (
-                            <div key={ind} className='protein'>
-                            <p>sequence: {rna.sequence}</p>
-                            <p>three letter sequence: {data.longSequence}</p>
-                            <p>length: {data.length}</p>
-                            <p>gravy: {data.gravy}</p>
-                            <p>mass: {data.mass}</p>
-                            <p>net charge: {data.netCharge}</p>
-                            <p>isoelectric point: {data.isoelectricPoint}</p>
-                            <div style={{ width: '100%', overflow: 'auto' }}> {data.svg} </div>
-                            </div>
-                        );
+                            <Props data={data} inf={inf} key={ind}/>
+                        ) ; 
                     })
                 }
             </div>
-            :
-            <p></p>
+            :<></>
          }
     </div>
   )

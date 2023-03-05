@@ -1,5 +1,5 @@
 {
-    "A": { "image": "https://raw.githubusercontent.com/EndernaN4U/bioinformatyka/source/src/static/aminoDrawingData/svg/A.svg", "flippedImage": "assets/statichttps://raw.githubusercontent.com/EndernaN4U/bioinformatyka/source/src/static/aminoDrawingData/svg/Af.svg" },
+    "A": { "image": "https://raw.githubusercontent.com/EndernaN4U/bioinformatyka/source/src/static/aminoDrawingData/svg/A.svg", "flippedImage": "https://raw.githubusercontent.com/EndernaN4U/bioinformatyka/source/src/static/aminoDrawingData/svg/Af.svg" },
     "C": { "image": "https://raw.githubusercontent.com/EndernaN4U/bioinformatyka/source/src/static/aminoDrawingData/svg/C.svg", "flippedImage": "https://raw.githubusercontent.com/EndernaN4U/bioinformatyka/source/src/static/aminoDrawingData/svg/Cf.svg" },
     "D": { "image": "https://raw.githubusercontent.com/EndernaN4U/bioinformatyka/source/src/static/aminoDrawingData/svg/D.svg", "flippedImage": "https://raw.githubusercontent.com/EndernaN4U/bioinformatyka/source/src/static/aminoDrawingData/svg/Df.svg" },
     "E": { "image": "https://raw.githubusercontent.com/EndernaN4U/bioinformatyka/source/src/static/aminoDrawingData/svg/E.svg", "flippedImage": "https://raw.githubusercontent.com/EndernaN4U/bioinformatyka/source/src/static/aminoDrawingData/svg/Ef.svg" },

@@ -25,7 +25,7 @@ export default class BioInformatyka{
     }
 
     readRNA(){      // Get RNA from a data 
-        const RegExp = /(AUG)((?!AUG)[AUGC]{3})*?(U(A(A|G)|GA))/gm;     // Set RegExp
+        const RegExp = /(AUG)((?!AUG)[AUGC]{3})*?(U(A(A|G)|GA))/gm;     // get a sequence which starts at string "AUG" and contains any number of triplets consisting of letters "A", "U", "G", "C" and that ends with any of the specified end codons.
         const foudedRna = this.dataString.match(RegExp) as Array<string>;
 
         this.data = [];
@@ -65,70 +65,92 @@ export default class BioInformatyka{
 
         let props = {
             length: _aminoAcid.length,
-            mass : this.calcMass(_aminoAcid),
+            mass : this.calcMass(amounts),
             gravy: this.calcGravy(amounts),
-            pi: this.calcPi(amounts),
+            netCharge: this.calcNetCharge(amounts),
+            isoelectricPoint: this.calcIsoelectricPoint(amounts),
             svg: this.drawSVG(_aminoAcid)
         }
         
         return props
     }
 
-    calcMass(_aminoAcid: string){
-        const aminoAcid = _aminoAcid.split('').map( e=>ObjKey(e))
-        let mass = 0;  
+    calcNetCharge( amounts: Map<string, number> ) {
+        // source: https://en.wikipedia.org/wiki/Henderson%E2%80%93Hasselbalch_equation
+        let pH = 7
+        let netCharge = 0 // initializes the  n-terminus charge
+        for ( let [key,amount] of amounts ) {
+            const delta =  aminoProps[ObjKey(key)][ObjKey("delta")] as any;
+            const charge = aminoProps[ObjKey(key)][ObjKey("charge")] as any;
 
-        for(let i = 0; i < aminoAcid.length; i++) {
-            mass += aminoProps[aminoAcid[i]][ObjKey("Mass")] as any
-        }
+            if(charge && delta) netCharge += delta * amount / (1+Math.pow(10, delta * (pH - charge)));        
+        } 
 
-        mass -= (aminoAcid.length - 1) * 18.015                 // 18.015 = H2O mass
-        mass = Math.round(mass * 10000) / 10000                 // round to 3 decimal places
-        return mass;
+        netCharge += -1/(1+Math.pow(10,(3.65-pH))); // include isoelectricity of the side chains 
+        netCharge += 1/(1+Math.pow(10,(pH-8.2)));                
+    
+        return netCharge.toFixed(3);
     }
 
-    calcGravy( amounts: Map<string, number> ) {
-        // gravy is calculated by adding hydropathy values of every aminoacid in the protein and then dividing it by the number of aminoacids
-        let gravy = 0, amountOfAminoacids = 0;
-        for (let [amino , amount] of amounts) {
-            const hydropathy = aminoProps[ObjKey(amino)][ObjKey("hydropathy")] as any;
-            gravy += amount * hydropathy;    
-            amountOfAminoacids += amount ;
-        }
-        gravy /= amountOfAminoacids
-        return gravy.toFixed(3)
-    }
 
-    
-
-    calcPi(amounts: Map<string,number>) {
-    
+    calcIsoelectricPoint(amounts: Map<string,number>) {
+        // isoelectric point is a value of the pH at which a molecule carries no net electrical charge
         let pH = 0
         while ( true ) { 
-            let NQ = 0 // initializes the  n-terminus charge
+            let NQ = 0 // net charge
             for ( let [key,amount] of amounts ) {
                 const delta =  aminoProps[ObjKey(key)][ObjKey("delta")] as any;
                 const charge = aminoProps[ObjKey(key)][ObjKey("charge")] as any;
 
-                if(charge && delta) NQ+= delta * amount / (1+Math.pow(10, delta * (pH - charge)));        
+                if(charge && delta) NQ+= delta * amount / (1+Math.pow(10, delta * (pH - charge))); // little modified equation, mathematically identical.
             } 
     
-            NQ+= -1/(1+Math.pow(10,(3.65-pH))); //these are constants, we can compute it beforehand btw
-            NQ+= 1/(1+Math.pow(10,(pH-8.2)));                
+            NQ += -1/(1+Math.pow(10,(3.65-pH))); // include isoelectricity of the side chains 
+            NQ += 1/(1+Math.pow(10,(pH-8.2)));                
     
-            if (pH>=14.0) {
-                console.log("Ph crossed 14.");
+            if ( pH>=14.0 ) {
+                // if Ph crossed 14, then something went wrong.
                 break;    
             }                                                 
     
-            if (NQ<=0) {
-                return +pH.toFixed(2);
+            if ( NQ<=0 ) {
+                return pH.toFixed(3);
             }
     
             pH+=0.01;
         }
         return null;
     }
+
+    calcMass( amounts: Map<string, number> ) {
+        //peptide mass is calculated by adding mass of every amino acid in the sequence.
+        let peptideMass = 0
+        let amountOfAminoacids = 0;
+        const H20Mass = 18.015;
+        for (let [amino , amount] of amounts) {
+            const aminoMass = aminoProps[ObjKey(amino)][ObjKey("Mass")] as any;
+            peptideMass += amount * aminoMass;    
+            amountOfAminoacids += amount;
+        }
+        peptideMass -= (amountOfAminoacids-1) * H20Mass;
+
+        return peptideMass.toFixed(3);
+    }
+
+    calcGravy( amounts: Map<string, number> ) {
+        // GRAVY is calculated by adding hydropathy values of every aminoacid in the protein and then dividing it by the number of aminoacids
+        let gravy = 0, amountOfAminoacids = 0;
+        for (let [amino , amount] of amounts) {
+            const hydropathy = aminoProps[ObjKey(amino)][ObjKey("hydropathy")] as any;
+            gravy += amount * hydropathy;    
+            amountOfAminoacids += amount;
+        }
+        gravy /= amountOfAminoacids;
+        return gravy.toFixed(3);
+    }
+
+    
+
 
     drawSVG(_aminoAcid : string) {
         //TODO: change magic numbers to fields in aminoDrawingData

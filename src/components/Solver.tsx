@@ -39,7 +39,8 @@ export default function Solver() {
                             <p>length: {data.length}</p>
                             <p>gravy: {data.gravy}</p>
                             <p>mass: {data.mass}</p>
-                            <p>pi: {data.pi}</p>
+                            <p>net charge: {data.netCharge}</p>
+                            <p>isoelectric point: {data.isoelectricPoint}</p>
                             <div style={{ width: '100%', overflow: 'auto' }}> {data.svg} </div>
                             </div>
                         );

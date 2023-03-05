@@ -35,15 +35,12 @@ export default function Solver() {
                         const data = inf.getProperties(rna.aminoAcid);
                         return (
                             <div key={ind} className='protein'>
-                            {/* <p>sequence: {rna.rna}</p> */}
                             <p>sequence: {rna.aminoAcid}</p>
                             <p>length: {data.length}</p>
                             <p>gravy: {data.gravy}</p>
                             <p>mass: {data.mass}</p>
                             <p>pi: {data.pi}</p>
-                            <div> {data.svg} </div>
-                            <p>prop</p>
-                            <p>prop</p>
+                            <div style={{ width: '100%', overflow: 'auto' }}> {data.svg} </div>
                             </div>
                         );
                     })

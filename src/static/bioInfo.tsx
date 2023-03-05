@@ -1,50 +1,7 @@
 import acids from './data/amino_acids.json';
 import aminoProps from './data/amino_acids_props.json';
-import A from './svg/A.svg'
-import Af from './svg/Af.svg'
-import C from './svg/C.svg'
-import Cf from './svg/Cf.svg'
-import D from './svg/D.svg'
-import Df from './svg/Df.svg'
-import E from './svg/E.svg'
-import Ef from './svg/Ef.svg'
-import F from './svg/F.svg'
-import Ff from './svg/Ff.svg'
-import G from './svg/G.svg'
-import Gf from './svg/Gf.svg'
-import H from './svg/H.svg'
-import Hf from './svg/Hf.svg'
-import I from './svg/I.svg'
-import If from './svg/If.svg'
-import K from './svg/K.svg'
-import Kf from './svg/Kf.svg'
-import L from './svg/L.svg'
-import Lf from './svg/Lf.svg'
-import M from './svg/M.svg'
-import N from './svg/N.svg'
-import Nf from './svg/Nf.svg'
-import P from './svg/P.svg'
-import Pf from './svg/Pf.svg'
-import Q from './svg/Q.svg'
-import Qf from './svg/Qf.svg'
-import R from './svg/R.svg'
-import Rf from './svg/Rf.svg'
-import S from './svg/S.svg'
-import Sf from './svg/Sf.svg'
-import T from './svg/T.svg'
-import Tf from './svg/Tf.svg'
-import V from './svg/V.svg'
-import Vf from './svg/Vf.svg'
-import W from './svg/W.svg'
-import Wf from './svg/Wf.svg'
-import Y from './svg/Y.svg'
-import Yf from './svg/Yf.svg'
-import Connector from './svg/connector.svg'
-import Connectorf from './svg/connectorf.svg'
-import ProlineConnector from './svg/proline connector.svg'
-import ProlineConnectorf from './svg/proline connectorf.svg'
-import Oxygen from './svg/oxygen.svg'
-import Oxygenf from './svg/oxygenf.svg'
+
+import aminoDrawingData from './aminoDrawingData/aminoDrawingData.json';
 
 function ObjKey(str: string): keyof Object{
     return str as keyof Object;
@@ -56,8 +13,7 @@ export default class BioInformatyka{
     data: Array<Object>
 
     constructor(_data: string = ""){
-        this.dataString = _data;
-        this.data = [];
+        this.dataString = _data; this.data = [];
     }
 
     dnaToRna(_data: string){        // Change thymine to uracil
@@ -154,6 +110,7 @@ export default class BioInformatyka{
             for ( let [key,amount] of amounts ) {
                 const delta =  aminoProps[ObjKey(key)][ObjKey("delta")] as any;
                 const charge = aminoProps[ObjKey(key)][ObjKey("charge")] as any;
+
                 if(charge && delta) NQ+= delta * amount / (1+Math.pow(10, delta * (pH - charge)));        
             } 
     
@@ -175,38 +132,9 @@ export default class BioInformatyka{
     }
 
     drawSVG(_aminoAcid : string) {
+        //TODO: change magic numbers to fields in aminoDrawingData
 
-        const svg = {
-            A: { pattern: A, flippedPattern: Af },
-            C: { pattern: C, flippedPattern: Cf},
-            D: { pattern: D, flippedPattern: Df },
-            E: { pattern: E, flippedPattern: Ef },
-            F: { pattern: F, flippedPattern: Ff },
-            G: { pattern: G, flippedPattern: Gf }, 
-            H: { pattern: H, flippedPattern: Hf }, 
-            I: { pattern: I, flippedPattern: If }, 
-            K: { pattern: K, flippedPattern: Kf }, 
-            L: { pattern: L, flippedPattern: Lf }, 
-            M: M, 
-            N: { pattern: N, flippedPattern: Nf }, 
-            P: { pattern: P, flippedPattern: Pf }, 
-            Q: { pattern: Q, flippedPattern: Qf }, 
-            R: { pattern: R, flippedPattern: Rf }, 
-            S: { pattern: S, flippedPattern: Sf }, 
-            T: { pattern: T, flippedPattern: Tf }, 
-            V: { pattern: V, flippedPattern: Vf }, 
-            W: { pattern: W, flippedPattern: Wf }, 
-            Y: { pattern: Y, flippedPattern: Yf },          
-
-            connector: Connector,
-            connectorf: Connectorf,
-            prolineConnector: ProlineConnector,
-            prolineConnectorf: ProlineConnectorf,
-            oxygen: Oxygen,
-            oxygenf: Oxygenf
-        }
-
-        let translate = 0
+        let offset= 0
         let connector = true
         let amino = false
         let transform = ''
@@ -215,20 +143,20 @@ export default class BioInformatyka{
 
         return(
           <div style={{ transform: 'translate(10px)' }}>
-          <img src={svg.M}></img>
+          <img src={aminoDrawingData.M.image}></img>
           {
             _aminoAcid.split("").map((el, i) => {
-                const translateCopy = translate
+                const offsetCopy = offset
                 amino = !amino
                 
                 if (el != 'M') connector = !connector
                 if (_aminoAcid[i - 1] == 'A' || _aminoAcid[i - 1] == 'G') connector = !connector
                 if (el == 'A' || el == 'G') {
                     amino = !amino
-                    translate += 72.964 + 35.777
+                    offset += 72.964 + 35.777
                 }
                 else {
-                    translate += 48.591 + 35.777
+                    offset += 48.591 + 35.777
                 } 
 
                 // translates for correct aligning amino acids
@@ -250,23 +178,23 @@ export default class BioInformatyka{
                         {
                             el == 'P' ?
                                 !connector ? 
-                                <img src={svg.prolineConnector} style={{ position: 'absolute', left: `${translateCopy - 35.777}px` }}></img>
+                                <img src={aminoDrawingData.prolineConnector} style={{ position: 'absolute', left: `${offsetCopy - 35.777}px` }}></img>
                                 :
-                                <img src={svg.prolineConnectorf} style={{ position: 'absolute', left: `${translateCopy - 35.777}px` }}></img>
+                                <img src={aminoDrawingData.prolineConnectorFlipped} style={{ position: 'absolute', left: `${offsetCopy - 35.777}px` }}></img>
                             :
                             !connector ? 
-                            <img src={svg.connector} style={{ position: 'absolute', left: `${translateCopy - 35.777}px` }}></img>
+                            <img src={aminoDrawingData.connector} style={{ position: 'absolute', left: `${offsetCopy - 35.777}px` }}></img>
                             :
-                            <img src={svg.connectorf} style={{ position: 'absolute', left: `${translateCopy - 35.777}px` }}></img>
+                            <img src={aminoDrawingData.connectorFlipped} style={{ position: 'absolute', left: `${offsetCopy - 35.777}px` }}></img>
                             
                         }
                         </>
                     }
                     {
                         amino ? 
-                        <>{<img src={svg[ObjKey(el)][ObjKey('pattern')] as any} style={{ position: 'absolute', left: `${translateCopy}px`, transform: transform }}></img>}</>
+                        <>{<img src={aminoDrawingData[ObjKey(el)][ObjKey('image')] as any} style={{ position: 'absolute', left: `${offsetCopy}px`, transform: transform }}></img>}</>
                         :
-                        <>{<img src={svg[ObjKey(el)][ObjKey('flippedPattern')] as any} style={{ position: 'absolute', left: `${translateCopy}px`, transform: transform }}></img>}</>
+                        <>{<img src={aminoDrawingData[ObjKey(el)][ObjKey('flippedImage')] as any} style={{ position: 'absolute', left: `${offsetCopy}px`, transform: transform }}></img>}</>
                     }
                     </>
                 )  
@@ -274,9 +202,9 @@ export default class BioInformatyka{
           }
           {
             connector ?
-            <img src={svg.oxygen} style={{ position: 'absolute', left: `${translate - 35.777}px` }}/>
+            <img src={aminoDrawingData.oxygen} style={{ position: 'absolute', left: `${offset - 35.777}px` }}/>
             :
-            <img src={svg.oxygenf} style={{ position: 'absolute', left: `${translate - 35.777}px` }}/>
+            <img src={aminoDrawingData.oxygenFlipped} style={{ position: 'absolute', left: `${offset - 35.777}px` }}/>
           }
           </div>
         )

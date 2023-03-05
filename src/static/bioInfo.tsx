@@ -115,10 +115,10 @@ export default class BioInformatyka{
     }
 
     getOccurencesChart( amounts: Map<string, number> ) {
-        amounts = [...amounts]
-        let labels = []
-        let values = []
-        amounts.map(([key,value]) => {labels.push(key); values.push(value)})
+        let amm = [...amounts];
+        let labels: Array<string> = []
+        let values: Array<number> = []
+        amm.map(([key,value]) => {labels.push(key); values.push(value)})
         return {labels:labels, amounts:values}
     }
 

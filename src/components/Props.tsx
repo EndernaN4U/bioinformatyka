@@ -29,13 +29,14 @@ export default function Props({data, inf}:{data: any, inf: BioInformatyka}) {
                   datasets: [{
                     data: data.isoelectricPoint.chartData,
                     borderWidth: 0.2
-                  }]
+                  }]    
                 }}
             />
             <p> number of aminoacids in the sequence </p>
+            {console.log(data.occurencesChart)}
             <Bar
             data={{
-                labels:data.occurencesChart.labels,
+                labels: data.occurencesChart.labels,
                   datasets: [{
                     data: data.occurencesChart.amounts,
                     borderWidth: 0.2

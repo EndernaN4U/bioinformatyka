@@ -66,6 +66,7 @@ export default class BioInformatyka{
         let props = {
             length: _aminoAcid.length,
             mass : this.calcMass(amounts),
+            longSequence : this.getLongSequence(_aminoAcid),
             gravy: this.calcGravy(amounts),
             netCharge: this.calcNetCharge(amounts),
             isoelectricPoint: this.calcIsoelectricPoint(amounts),
@@ -73,6 +74,14 @@ export default class BioInformatyka{
         }
         
         return props
+    }
+
+    getLongSequence(_aminoAcid : string) {
+        let longSequence = '';
+        for (let amino of _aminoAcid) {
+            longSequence += aminoProps[ObjKey(amino)][ObjKey("Symbol")] as any + " - ";
+        }
+        return "NH2 - " + longSequence + "OOOH" // a small hack to remove trailing "- "
     }
 
     calcNetCharge( amounts: Map<string, number> ) {

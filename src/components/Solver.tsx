@@ -36,6 +36,7 @@ export default function Solver() {
                         return (
                             <div key={ind} className='protein'>
                             <p>sequence: {rna.aminoAcid}</p>
+                            <p>three letter sequence: {data.longSequence}</p>
                             <p>length: {data.length}</p>
                             <p>gravy: {data.gravy}</p>
                             <p>mass: {data.mass}</p>

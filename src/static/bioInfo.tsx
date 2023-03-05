@@ -82,6 +82,7 @@ export default class BioInformatyka{
             gravy: this.calcGravy(amounts),
             netCharge: this.calcNetCharge(amounts),
             isoelectricPoint: this.calcIsoelectricPoint(amounts),
+            occurencesChart: this.getOccurencesChart(amounts),
             svg: this.drawSVG(sequence)
         }
         
@@ -93,7 +94,7 @@ export default class BioInformatyka{
         for (let amino of sequence) {
             longSequence += aminoProps[ObjKey(amino)][ObjKey("Symbol")] as any + " - ";
         }
-        return "NH2 - " + longSequence + "OOOH" // a small hack to remove trailing "- "
+        return "NH2 - " + longSequence + "COO-" 
     }
 
     calcNetCharge( amounts: Map<string, number> ) {
@@ -113,10 +114,19 @@ export default class BioInformatyka{
         return netCharge.toFixed(3);
     }
 
+    getOccurencesChart( amounts: Map<string, number> ) {
+        amounts = [...amounts]
+        let labels = []
+        let values = []
+        amounts.map(([key,value]) => {labels.push(key); values.push(value)})
+        return {labels:labels, amounts:values}
+    }
 
     calcIsoelectricPoint(amounts: Map<string,number>) {
         // isoelectric point is a value of the pH at which a molecule carries no net electrical charge
-        let pH = 0
+        let pH = 0;
+        let chartData = [];
+        let i = 0;
         while ( true ) { 
             let NQ = 0 // net charge
             for ( let [key,amount] of amounts ) {
@@ -128,20 +138,27 @@ export default class BioInformatyka{
     
             NQ += -1/(1+Math.pow(10,(3.65-pH))); // include isoelectricity of the side chains 
             NQ += 1/(1+Math.pow(10,(pH-8.2)));                
-    
+
+
             if ( pH>=14.0 ) {
                 // if Ph crossed 14, then something went wrong.
                 break;    
             }                                                 
     
+            if (i%10 === 0 ) {
+                chartData[chartData.length] = {x:pH, y:NQ}
+            }
+
             if ( NQ<=0 ) {
-                return pH.toFixed(3);
+                return {isoelectricPoint:pH.toFixed(3), chartData:chartData}
             }
     
             pH+=0.01;
+            i++;
         }
         return null;
     }
+
 
     calcMass( amounts: Map<string, number> ) {
         //peptide mass is calculated by adding mass of every amino acid in the sequence.

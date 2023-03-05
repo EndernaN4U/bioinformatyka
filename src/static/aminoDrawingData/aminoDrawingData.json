@@ -18,13 +18,11 @@
     "T": { "image": "src/static/aminoDrawingData/svg/T.svg", "flippedImage": "src/static/aminoDrawingData/svg/Tf.svg" }, 
     "V": { "image": "src/static/aminoDrawingData/svg/V.svg", "flippedImage": "src/static/aminoDrawingData/svg/Vf.svg" }, 
     "W": { "image": "src/static/aminoDrawingData/svg/W.svg", "flippedImage": "src/static/aminoDrawingData/svg/Wf.svg" }, 
-    "Y": { "image": "src/static/aminoDrawingData/svg/Y.svg", "flippedImage": "src/static/aminoDrawingData/svg/Yf.svg" },          
-    "oxygen":                   "src/static/aminoDrawingData/svg/oxygen.svg",
-    "oxygenFlipped":            "src/static/aminoDrawingData/svg/oxygenf.svg",
-
-    "connector":                "src/static/aminoDrawingData/svg/connector.svg",
-    "connectorFlipped":         "src/static/aminoDrawingData/svg/connectorf.svg",
-    "connectorOffset":          35.777,
-    "prolineConnector":         "src/static/aminoDrawingData/svg/prolineConnector.svg",
-    "prolineConnectorFlipped":  "src/static/aminoDrawingData/svg/prolineConnectorf.svg"
+    "Y": { "image": "src/static/aminoDrawingData/svg/Y.svg", "flippedImage": "src/static/aminoDrawingData/svg/Yf.svg" },        
+    "oxygen": { "image":  "src/static/aminoDrawingData/svg/oxygen.svg", "flippedImage": "src/static/aminoDrawingData/svg/oxygenf.svg" },  
+    "connector": { "image":  "src/static/aminoDrawingData/svg/connector.svg", "flippedImage": "src/static/aminoDrawingData/svg/connectorf.svg" },  
+    "prolineConnector": { "image":  "src/static/aminoDrawingData/svg/proline connector.svg", "flippedImage": "src/static/aminoDrawingData/svg/proline connectorf.svg" },
+    "connectorOffset": 35.777,
+    "aminoOffset": 48.591,
+    "longAminoOffset": 72.964
 }

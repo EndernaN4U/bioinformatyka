@@ -44,9 +44,7 @@ export default function Solver() {
                 <div className="about">
                     <h2>Protein analysis</h2>
                     <p>
-                        The app generates the structure<br />
-                        and data of a protein, where output<br />
-                        bases on the amino acid string.
+                        Please input amino acid sequence.
                     </p>
                 </div>
                 <div className="input-section">

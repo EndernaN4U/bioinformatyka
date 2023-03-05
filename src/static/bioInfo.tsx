@@ -19,7 +19,18 @@ export default class BioInformatyka{
         return _data.replaceAll('T','U');
     }
 
+    validateData(_data: string){
+        _data.split('').map((element)=>{
+            if(!['A','U','G','C'].includes(element)) return false;
+        })
+        return true;
+    }
+
     setData(_data: string){         // Set data
+        if(_data.includes('T')) _data = this.dnaToRna(_data);
+        if(!this.validateData(_data)) return;
+
+
         this.dataString = _data;
         this.readRNA();             // force 'readRNA'
     }
@@ -32,7 +43,7 @@ export default class BioInformatyka{
         
         foudedRna.forEach((rna: String)=>{
             const acid = this.codonsIntoAcids(rna as string);
-            this.data.push({aminoAcid: acid, rna: rna});
+            this.data.push({sequence: acid, rna: rna});
         })
     }
 
@@ -54,31 +65,31 @@ export default class BioInformatyka{
         return acids;
     }
 
-    getProperties(_aminoAcid: string){
+    getProperties(sequence: string){
 
         let amounts = new Map<string, number>();
-        for (let aminoacid of _aminoAcid ) { // iterates over protein, counts aminoacids with charges
+        for (let aminoacid of sequence ) { // iterates over protein, counts aminoacids with charges
             if ( aminoProps[ObjKey(aminoacid)] !== undefined ) {
                  amounts.set(aminoacid,(amounts.has(aminoacid)? amounts.get(aminoacid)! + 1 : 1))
             }  
         }
 
         let props = {
-            length: _aminoAcid.length,
+            length: sequence.length,
             mass : this.calcMass(amounts),
-            longSequence : this.getLongSequence(_aminoAcid),
+            longSequence : this.getLongSequence(sequence),
             gravy: this.calcGravy(amounts),
             netCharge: this.calcNetCharge(amounts),
             isoelectricPoint: this.calcIsoelectricPoint(amounts),
-            svg: this.drawSVG(_aminoAcid)
+            svg: this.drawSVG(sequence)
         }
         
         return props
     }
 
-    getLongSequence(_aminoAcid : string) {
+    getLongSequence(sequence : string) {
         let longSequence = '';
-        for (let amino of _aminoAcid) {
+        for (let amino of sequence) {
             longSequence += aminoProps[ObjKey(amino)][ObjKey("Symbol")] as any + " - ";
         }
         return "NH2 - " + longSequence + "OOOH" // a small hack to remove trailing "- "
@@ -161,7 +172,7 @@ export default class BioInformatyka{
     
 
 
-    drawSVG(_aminoAcid : string) {
+    drawSVG(sequence : string) {
         //TODO: change magic numbers to fields in aminoDrawingData
 
         let offset = -aminoDrawingData.connectorOffset
@@ -174,10 +185,10 @@ export default class BioInformatyka{
           <div style={{ width: 'calc(100% - 10px)', transform: 'translate(10px)' }}>
           <img src={aminoDrawingData.M.image}></img>
           {
-            _aminoAcid.split("").map((el, i) => {
+            sequence.split("").map((el, i) => {
                 const offsetCopy = offset
                 
-                if (_aminoAcid[i - 1] == 'A' || _aminoAcid[i - 1] == 'G') {
+                if (sequence[i - 1] == 'A' || sequence[i - 1] == 'G') {
                     connector = !connector
                     oxygen = connector
                 }

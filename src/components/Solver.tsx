@@ -5,18 +5,30 @@ export default function Solver() {
 
     const [inf, setBioInfo] = useState(new BioInformatyka());
     const [data,setData] = useState('');
+    const [type, setType] = useState('text');
 
-    let myRef = createRef<HTMLTextAreaElement>();
+    let textRef = createRef<HTMLTextAreaElement>();
+    let fileRef = createRef<HTMLInputElement>();
 
     const changeData = ()=>{
-        let input = myRef.current?.value!;
-        if(input === ""){
-            inf.data = [];
-            setData("");
-            return;
+        if(type==="text"){
+            let input = textRef.current?.value!;
+            if(input === ""){
+                inf.data = [];
+                setData("");
+                return;
+            }
+            inf.setData(input);
+            setData(input);
         }
-        inf.setData(input);
-        setData(input);
+        else{
+            if(!fileRef.current?.files) return; // No files 
+            fileRef.current?.files![0].text().then(data=>{
+                inf.setData(data);
+                setData(data);
+            })
+        }
+        
     } 
 
     useEffect(()=>{
@@ -25,17 +37,24 @@ export default function Solver() {
 
   return (
     <div>
-        <textarea ref={myRef}></textarea>
+        <label>Text</label>
+        <input type="radio" name="type" checked={(type==="text")} onClick={()=>setType("text")}/>
+
+        <label>File</label>
+        <input type="radio" name="type" checked={(type==="file")} onClick={()=>setType("file")}/>
+
+        <textarea style={{display: (type==="text")? "block":"none"}} ref={textRef}></textarea>
+        <input style={{display: (type==="file")? "block":"none"}} ref={fileRef} type="file" accept='.txt' multiple={false}/>
         <button onClick={changeData}>Calculate</button>
          {
             (inf.data)?
             <div>
                 {
                     inf.data.map((rna: any, ind: any)=>{
-                        const data = inf.getProperties(rna.aminoAcid);
+                        const data = inf.getProperties(rna.sequence);
                         return (
                             <div key={ind} className='protein'>
-                            <p>sequence: {rna.aminoAcid}</p>
+                            <p>sequence: {rna.sequence}</p>
                             <p>three letter sequence: {data.longSequence}</p>
                             <p>length: {data.length}</p>
                             <p>gravy: {data.gravy}</p>
@@ -49,7 +68,7 @@ export default function Solver() {
                 }
             </div>
             :
-            <p>Wpisz cos XD</p>
+            <p></p>
          }
     </div>
   )

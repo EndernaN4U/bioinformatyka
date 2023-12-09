@@ -1,14 +1,13 @@
 # Bioinformatyka
 
-App written by
+App written by<br>
 
-<ol style="list-style-type: none; padding: 0;">
-    <li>Rogóż Sebastian</li>
-    <li>Marek Karol</li>
-    <li>Matuszczak Maciej</li>
-    <li>Skupień Arkadiusz</li>
-    <li>Zięba Adrian</li>
-</ol>
+Rogóż Sebastian<br>
+Marek Karol<br>
+Matuszczak Maciej<br>
+Skupień Arkadiusz<br>
+Zięba Adrian<br>
+
 for Motorola Science Cup 2022.
 
 ## Documentation
